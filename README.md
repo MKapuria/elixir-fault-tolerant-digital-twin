@@ -32,4 +32,49 @@ git clone https://github.com/YOUR_USERNAME/elixir-fault-tolerant-digital-twin.gi
 cd elixir-fault-tolerant-digital-twin
 ```
 
+### 3. Demo
+After cloning the repo, you can run a live demo of the digital twin and observe its fault tolerance. 
+
+**Step 1: Start the simulation in interactive mode**
+
+```bash
+iex.bat -S mix   # On Windows
+# or on Linux/macOS:
+iex -S mix
+```
+
+Then, inside the IEx shell:
+```bash
+Main.run()
+```
+This spawns 1000 particles distributed across 5 Elixir processes (bundles), starts the plant and the twin, and logs the results into ```log.csv```. 
+
+**Step 2: Visualize the particle filter in real time
+
+Open a second terminal in the same folder and run:
+```bash
+python plot_live.py
+```
+
+The reads the ```log.csv``` and plts the evolving particle distribution live. Make sure to delete any old .csv files before running this command. 
+
+**Step 3: Test fault tolerance
+Back in the IEx terminal, list the current running bundles of particles:
+```bash
+ParticleFilterbundles()
+```
+This should output 5 process IDs (PIDs), each process consisting of 200 particles. 
+
+Then kill one bundle to simulate a process failure:
+```bash
+ParticleFilter.kill_bundle(2)
+```
+```2``` is the index of one of the 5 processes. 
+You'll see that one process stops, this means that the particle filter is only running 800 particles instead of 1000. 
+However, the reamining bundles continue estimation, and the python plot continues updating because the system is still functional. 
+
+This process can be repeated and each process can be killed off one-by-one, and the results can be seen in real time on the python plot. 
+We observe that the uncertainty of estimation grows as more bundles are killed off, but the digital twin still remains functional until the very last bundle is killed. 
+This architecture combines probabilistic state estimation with the Elixir language to demonstrate fault tolerance of digital twins in real time. 
+
 
