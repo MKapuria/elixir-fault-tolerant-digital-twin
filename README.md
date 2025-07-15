@@ -7,9 +7,9 @@ If one process fails, the rest continue running, maintaining a degraded but func
 ---
 
 ## Key Features
-- **Particle filter-based state estimation** with uncertainty  
-- **Fault-tolerant supervision tree**—if one process crashes, the twin continues running  
-- **Real-time visualization** using a Python plotting script  
+- Particle filter-based state estimation with uncertainty  
+- Fault-tolerant supervision tree: if one process crashes, the twin continues running  
+- Real-time visualization using a Python plotting script  
 - Modular design for experimenting with fault injection and resilience  
 
 ---
@@ -31,8 +31,8 @@ Each component runs as its own **Elixir process**. If one crashes, the others re
 - **Digital Twin** estimates system state using a particle filter  
 - **Logger** records results for visualization  
 
-The digital twin uses **5 parallel processes**, each running 200 particles.  
-Killing one process reduces the total particles but the system continues running in **degraded mode**.
+The digital twin uses 5 parallel processes, each running 200 particles.  
+Killing one process reduces the total particles but the system continues running in degraded mode.
 
 ---
 
