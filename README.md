@@ -85,6 +85,7 @@ python plot_live.py
 This reads the ```log.csv``` file and plots the evolving particle distribution live. Make sure to delete any old ```.csv``` files before running this command. 
 
 **Step 3: Test fault tolerance**
+
 Back in the IEx terminal, list the current running bundles of particles:
 ```bash
 ParticleFilter.bundles()
@@ -100,6 +101,7 @@ You'll see that one process stops, this means that the particle filter is only r
 However, the remaining bundles continue estimation, and the Python plot continues updating because the system is still functional. 
 
 **Step 4: Kill more processes**
+
 This process can be repeated and each process can be killed off one-by-one, and the results can be seen in real time on the python plot. 
 We observe that the uncertainty of estimation grows as more bundles are killed off, but the digital twin still remains functional until the very last bundle is killed. 
 This architecture combines probabilistic state estimation with Elixir’s concurrency model to demonstrate fault tolerance in real time.
