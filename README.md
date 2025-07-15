@@ -40,7 +40,7 @@ Killing one process reduces the total particles but the system continues running
 
 When running the Python visualization script, you’ll see the evolving particle distribution over time:
 
-![Example Plot](assets/plot_example.png)
+![Example Plot](assets/plotexample.png)
 
 As processes are killed, the uncertainty in the plot grows, but the system continues functioning until the final process is removed.
 
