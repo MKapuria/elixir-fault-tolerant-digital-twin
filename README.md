@@ -6,7 +6,7 @@ If one process fails, the rest continue running, maintaining a degraded but func
 
 ---
 
-## 🔹 Key Features
+## Key Features
 - **Particle filter-based state estimation** with uncertainty  
 - **Fault-tolerant supervision tree**—if one process crashes, the twin continues running  
 - **Real-time visualization** using a Python plotting script  
@@ -14,13 +14,39 @@ If one process fails, the rest continue running, maintaining a degraded but func
 
 ---
 
-## 🔹 Why This Matters
+## Why This Matters
 Safety-critical systems in industrial control and autonomous environments must withstand failures without losing core functionality.  
 This project explores how Elixir’s fault-tolerant design can provide resilience for digital twins in ICS/OT applications.
 
 ---
 
-## 🔹 Getting Started
+## How It Works
+
+Each component runs as its own **Elixir process**. If one crashes, the others remain unaffected, demonstrating fault isolation and resilience.
+
+![Architecture Diagram](assets/architecture.png)
+
+- **Clock** triggers periodic updates  
+- **Plant** simulates the system dynamics  
+- **Digital Twin** estimates system state using a particle filter  
+- **Logger** records results for visualization  
+
+The digital twin uses **5 parallel processes**, each running 200 particles.  
+Killing one process reduces the total particles but the system continues running in **degraded mode**.
+
+---
+
+### Example Output
+
+When running the Python visualization script, you’ll see the evolving particle distribution over time:
+
+![Example Plot](assets/plot_example.png)
+
+As processes are killed, the uncertainty in the plot grows, but the system continues functioning until the final process is removed.
+
+---
+
+## Getting Started
 
 ### 1. Requirements
 - **Elixir** (>= 1.14)  
