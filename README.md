@@ -28,7 +28,7 @@ This project explores how Elixir’s fault-tolerant design can provide resilienc
 
 ### 2. Clone this Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/elixir-fault-tolerant-digital-twin.git
+git clone https://github.com/MKapuria/elixir-fault-tolerant-digital-twin.git
 cd elixir-fault-tolerant-digital-twin
 ```
 
@@ -56,12 +56,12 @@ Open a second terminal in the same folder and run:
 python plot_live.py
 ```
 
-The reads the ```log.csv``` and plts the evolving particle distribution live. Make sure to delete any old .csv files before running this command. 
+This reads the ```log.csv``` and plots the evolving particle distribution live. Make sure to delete any old .csv files before running this command. 
 
 **Step 3: Test fault tolerance
 Back in the IEx terminal, list the current running bundles of particles:
 ```bash
-ParticleFilterbundles()
+ParticleFilter.bundles()
 ```
 This should output 5 process IDs (PIDs), each process consisting of 200 particles. 
 
@@ -71,7 +71,7 @@ ParticleFilter.kill_bundle(2)
 ```
 ```2``` is the index of one of the 5 processes. 
 You'll see that one process stops, this means that the particle filter is only running 800 particles instead of 1000. 
-However, the reamining bundles continue estimation, and the python plot continues updating because the system is still functional. 
+However, the remaining bundles continue estimation, and the python plot continues updating because the system is still functional. 
 
 This process can be repeated and each process can be killed off one-by-one, and the results can be seen in real time on the python plot. 
 We observe that the uncertainty of estimation grows as more bundles are killed off, but the digital twin still remains functional until the very last bundle is killed. 
