@@ -1,21 +1,22 @@
-# ParticleFilterFaultTolerant
+# Fault-Tolerant Digital Twin in Elixir
 
-**TODO: Add description**
+This project implements a **fault-tolerant particle filter digital twin** using Elixir, designed to demonstrate real-time resilience for ICS/OT systems.
 
-## Installation
+## 🔹 Key Features
+- Distributed particle filter with fault tolerance  
+- Supervision trees for process recovery  
+- Real-time measurement integration over UDP  
+- Deployment tested on BeagleBone Black running Kry10 OS  
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `particle_filter_fault_tolerant` to your list of dependencies in `mix.exs`:
+## 🔹 Why This Matters
+Safety-critical systems in industrial control and autonomous environments must withstand failures without losing core functionality. This project explores how **actor-model concurrency in Elixir** can provide a foundation for resilient digital twins.
 
-```elixir
-def deps do
-  [
-    {:particle_filter_fault_tolerant, "~> 0.1.0"}
-  ]
-end
-```
+## 🔹 Status
+Currently runs with 1000 particles distributed across 5 processes. If one process fails, estimation continues with the remaining 800 particles.
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/particle_filter_fault_tolerant>.
+## 🔹 Next Steps
+- Document architecture and workflows  
+- Add test cases and fault injection scenarios  
+- Provide deployment instructions for Kry10 OS  
 
+More details and code will be added soon.
