@@ -24,7 +24,7 @@ ax2.legend()
 
 ax2.ticklabel_format(useOffset=False, style='plain', axis='x')
 
-# ✅ Draw once immediately with dummy data
+# Draw once immediately with dummy data
 fig.canvas.draw()
 fig.canvas.flush_events()
 
